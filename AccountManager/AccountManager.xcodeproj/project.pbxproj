@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45238F4B20F734000001CAF0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45238F4A20F734000001CAF0 /* AppDelegate.m */; };
+		45238F4E20F734000001CAF0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45238F4D20F734000001CAF0 /* ViewController.m */; };
+		45238F5120F734000001CAF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45238F4F20F734000001CAF0 /* Main.storyboard */; };
+		45238F5620F734000001CAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45238F5520F734000001CAF0 /* Assets.xcassets */; };
+		45238F5920F734000001CAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45238F5720F734000001CAF0 /* LaunchScreen.storyboard */; };
+		45238F5C20F734000001CAF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45238F5B20F734000001CAF0 /* main.m */; };
+		452CD092225D940400598BF2 /* FSQLCommandHandle+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 452CD091225D940400598BF2 /* FSQLCommandHandle+Update.m */; };
+		452CD0BA226027AE00598BF2 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452CD0B9226027AE00598BF2 /* SettingViewController.m */; };
+		452CD0BD22602E0B00598BF2 /* CommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 452CD0BC22602E0B00598BF2 /* CommonTool.m */; };
+		452CD0C0226069DF00598BF2 /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 452CD0BF226069DF00598BF2 /* SettingSwitchCell.m */; };
+		453DBC7B2105D3AB00FF016E /* AccountOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453DBC7A2105D3AB00FF016E /* AccountOperationViewController.m */; };
+		45516A5721391D3300B11FBF /* AccountDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45516A5621391D3300B11FBF /* AccountDetailCell.m */; };
+		4556280D20F886FF00FE0C2D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556280C20F886FF00FE0C2D /* HomePageViewController.m */; };
+		4556281520F8875D00FE0C2D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556281420F8875D00FE0C2D /* BaseViewController.m */; };
+		4556282C20FC6DB100FE0C2D /* DBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556282B20FC6DB100FE0C2D /* DBBaseModel.m */; };
+		4558C4CF20FED2DA0043B79C /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 4558C4CE20FED2DA0043B79C /* Account.m */; };
+		45990D1D21129385009662A3 /* FSQLCommandHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1C21129385009662A3 /* FSQLCommandHandle.m */; };
+		45990D20211294E6009662A3 /* FSQLDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1F211294E6009662A3 /* FSQLDataBase.m */; };
+		45990D2821129AA2009662A3 /* UIView+FFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D2721129AA2009662A3 /* UIView+FFrame.m */; };
+		45990D2B21129D77009662A3 /* FSQLBaseTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D2A21129D77009662A3 /* FSQLBaseTable.m */; };
+		45990D2E2112A145009662A3 /* FSQLCommandHandle+CreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D2D2112A145009662A3 /* FSQLCommandHandle+CreateTable.m */; };
+		45990D312112D052009662A3 /* FSQLBaseTable+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D302112D052009662A3 /* FSQLBaseTable+Insert.m */; };
+		45990D342112D08C009662A3 /* FSQLBaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D332112D08C009662A3 /* FSQLBaseRecord.m */; };
+		45990D372112D850009662A3 /* FSQLCommandHandle+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D362112D850009662A3 /* FSQLCommandHandle+Insert.m */; };
+		45990D3B2112E36A009662A3 /* FSQLBaseTable+Read.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D3A2112E36A009662A3 /* FSQLBaseTable+Read.m */; };
+		45990D3E2112E3A5009662A3 /* FSQLCommandHandle+Read.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D3D2112E3A5009662A3 /* FSQLCommandHandle+Read.m */; };
+		45990D412113E21D009662A3 /* AccountTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D402113E21D009662A3 /* AccountTable.m */; };
+		5291D5656DEBC9F21051E8F0 /* libPods-AccountManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D9A364C6C825FE4AEEE4C8 /* libPods-AccountManager.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		45238F4620F734000001CAF0 /* AccountManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45238F4920F734000001CAF0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		45238F4A20F734000001CAF0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		45238F4C20F734000001CAF0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		45238F4D20F734000001CAF0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		45238F5020F734000001CAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		45238F5520F734000001CAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45238F5820F734000001CAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		45238F5A20F734000001CAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45238F5B20F734000001CAF0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		452CD090225D940400598BF2 /* FSQLCommandHandle+Update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLCommandHandle+Update.h"; sourceTree = "<group>"; };
+		452CD091225D940400598BF2 /* FSQLCommandHandle+Update.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLCommandHandle+Update.m"; sourceTree = "<group>"; };
+		452CD0B1225ED8A900598BF2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		452CD0B2225ED8A900598BF2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		452CD0B8226027AE00598BF2 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		452CD0B9226027AE00598BF2 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		452CD0BB22602E0B00598BF2 /* CommonTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTool.h; sourceTree = "<group>"; };
+		452CD0BC22602E0B00598BF2 /* CommonTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTool.m; sourceTree = "<group>"; };
+		452CD0BE226069DF00598BF2 /* SettingSwitchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
+		452CD0BF226069DF00598BF2 /* SettingSwitchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
+		453DBC792105D3AB00FF016E /* AccountOperationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountOperationViewController.h; sourceTree = "<group>"; };
+		453DBC7A2105D3AB00FF016E /* AccountOperationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountOperationViewController.m; sourceTree = "<group>"; };
+		45516A5521391D3300B11FBF /* AccountDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountDetailCell.h; sourceTree = "<group>"; };
+		45516A5621391D3300B11FBF /* AccountDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountDetailCell.m; sourceTree = "<group>"; };
+		4556280B20F886FF00FE0C2D /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		4556280C20F886FF00FE0C2D /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		4556281320F8875D00FE0C2D /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		4556281420F8875D00FE0C2D /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		4556281B20F889D700FE0C2D /* AccountManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AccountManager-Prefix.pch"; sourceTree = "<group>"; };
+		4556281C20F88BA200FE0C2D /* CommonConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonConfigure.h; sourceTree = "<group>"; };
+		4556282A20FC6DB100FE0C2D /* DBBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBBaseModel.h; sourceTree = "<group>"; };
+		4556282B20FC6DB100FE0C2D /* DBBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBBaseModel.m; sourceTree = "<group>"; };
+		4558C4CD20FED2DA0043B79C /* Account.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		4558C4CE20FED2DA0043B79C /* Account.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		45990D1B21129385009662A3 /* FSQLCommandHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLCommandHandle.h; sourceTree = "<group>"; };
+		45990D1C21129385009662A3 /* FSQLCommandHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLCommandHandle.m; sourceTree = "<group>"; };
+		45990D1E211294E6009662A3 /* FSQLDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLDataBase.h; sourceTree = "<group>"; };
+		45990D1F211294E6009662A3 /* FSQLDataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLDataBase.m; sourceTree = "<group>"; };
+		45990D2621129AA2009662A3 /* UIView+FFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FFrame.h"; sourceTree = "<group>"; };
+		45990D2721129AA2009662A3 /* UIView+FFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FFrame.m"; sourceTree = "<group>"; };
+		45990D2921129D77009662A3 /* FSQLBaseTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLBaseTable.h; sourceTree = "<group>"; };
+		45990D2A21129D77009662A3 /* FSQLBaseTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLBaseTable.m; sourceTree = "<group>"; };
+		45990D2C2112A145009662A3 /* FSQLCommandHandle+CreateTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLCommandHandle+CreateTable.h"; sourceTree = "<group>"; };
+		45990D2D2112A145009662A3 /* FSQLCommandHandle+CreateTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLCommandHandle+CreateTable.m"; sourceTree = "<group>"; };
+		45990D2F2112D052009662A3 /* FSQLBaseTable+Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLBaseTable+Insert.h"; sourceTree = "<group>"; };
+		45990D302112D052009662A3 /* FSQLBaseTable+Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLBaseTable+Insert.m"; sourceTree = "<group>"; };
+		45990D322112D08C009662A3 /* FSQLBaseRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLBaseRecord.h; sourceTree = "<group>"; };
+		45990D332112D08C009662A3 /* FSQLBaseRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLBaseRecord.m; sourceTree = "<group>"; };
+		45990D352112D850009662A3 /* FSQLCommandHandle+Insert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLCommandHandle+Insert.h"; sourceTree = "<group>"; };
+		45990D362112D850009662A3 /* FSQLCommandHandle+Insert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLCommandHandle+Insert.m"; sourceTree = "<group>"; };
+		45990D382112DC20009662A3 /* FTableFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTableFrame.h; sourceTree = "<group>"; };
+		45990D392112E36A009662A3 /* FSQLBaseTable+Read.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLBaseTable+Read.h"; sourceTree = "<group>"; };
+		45990D3A2112E36A009662A3 /* FSQLBaseTable+Read.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLBaseTable+Read.m"; sourceTree = "<group>"; };
+		45990D3C2112E3A5009662A3 /* FSQLCommandHandle+Read.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSQLCommandHandle+Read.h"; sourceTree = "<group>"; };
+		45990D3D2112E3A5009662A3 /* FSQLCommandHandle+Read.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FSQLCommandHandle+Read.m"; sourceTree = "<group>"; };
+		45990D3F2113E21D009662A3 /* AccountTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountTable.h; sourceTree = "<group>"; };
+		45990D402113E21D009662A3 /* AccountTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountTable.m; sourceTree = "<group>"; };
+		9D1C86EAAC45E14589B83DF6 /* Pods-AccountManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-AccountManager/Pods-AccountManager.release.xcconfig"; sourceTree = "<group>"; };
+		A0D9A364C6C825FE4AEEE4C8 /* libPods-AccountManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AccountManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA34E0FCA58F96670D6703E9 /* Pods-AccountManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AccountManager/Pods-AccountManager.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45238F4320F734000001CAF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5291D5656DEBC9F21051E8F0 /* libPods-AccountManager.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45238F3D20F734000001CAF0 = {
+			isa = PBXGroup;
+			children = (
+				45238F4820F734000001CAF0 /* AccountManager */,
+				45238F4720F734000001CAF0 /* Products */,
+				F49066A240E61FA53FDCCC80 /* Pods */,
+				C7598150093DC6B17935ED94 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		45238F4720F734000001CAF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45238F4620F734000001CAF0 /* AccountManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45238F4820F734000001CAF0 /* AccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				45990D2521129AA2009662A3 /* Tool */,
+				45990D17211291BB009662A3 /* Vender */,
+				4556280E20F8874F00FE0C2D /* Base */,
+				4556280620F886D500FE0C2D /* Account */,
+				452CD0B3226026BA00598BF2 /* Setting */,
+				45238F4920F734000001CAF0 /* AppDelegate.h */,
+				45238F4A20F734000001CAF0 /* AppDelegate.m */,
+				45238F4C20F734000001CAF0 /* ViewController.h */,
+				45238F4D20F734000001CAF0 /* ViewController.m */,
+				45238F4F20F734000001CAF0 /* Main.storyboard */,
+				45238F5520F734000001CAF0 /* Assets.xcassets */,
+				45238F5720F734000001CAF0 /* LaunchScreen.storyboard */,
+				45238F5A20F734000001CAF0 /* Info.plist */,
+				45238F5B20F734000001CAF0 /* main.m */,
+				4556281B20F889D700FE0C2D /* AccountManager-Prefix.pch */,
+			);
+			path = AccountManager;
+			sourceTree = "<group>";
+		};
+		452CD0B3226026BA00598BF2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				452CD0B7226026BA00598BF2 /* ViewController */,
+				452CD0B6226026BA00598BF2 /* View */,
+				452CD0B5226026BA00598BF2 /* Model */,
+				452CD0B4226026BA00598BF2 /* Other */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		452CD0B4226026BA00598BF2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		452CD0B5226026BA00598BF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		452CD0B6226026BA00598BF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				452CD0BE226069DF00598BF2 /* SettingSwitchCell.h */,
+				452CD0BF226069DF00598BF2 /* SettingSwitchCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		452CD0B7226026BA00598BF2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				452CD0B8226027AE00598BF2 /* SettingViewController.h */,
+				452CD0B9226027AE00598BF2 /* SettingViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4556280620F886D500FE0C2D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				4556280720F886D500FE0C2D /* Controller */,
+				4556280A20F886D500FE0C2D /* View */,
+				4556280820F886D500FE0C2D /* Model */,
+				4556280920F886D500FE0C2D /* Other */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		4556280720F886D500FE0C2D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4556280B20F886FF00FE0C2D /* HomePageViewController.h */,
+				4556280C20F886FF00FE0C2D /* HomePageViewController.m */,
+				453DBC792105D3AB00FF016E /* AccountOperationViewController.h */,
+				453DBC7A2105D3AB00FF016E /* AccountOperationViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4556280820F886D500FE0C2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4558C4CD20FED2DA0043B79C /* Account.h */,
+				4558C4CE20FED2DA0043B79C /* Account.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4556280920F886D500FE0C2D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				45990D3F2113E21D009662A3 /* AccountTable.h */,
+				45990D402113E21D009662A3 /* AccountTable.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4556280A20F886D500FE0C2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45516A5521391D3300B11FBF /* AccountDetailCell.h */,
+				45516A5621391D3300B11FBF /* AccountDetailCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4556280E20F8874F00FE0C2D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4556280F20F8874F00FE0C2D /* Controller */,
+				4556281020F8874F00FE0C2D /* Model */,
+				4556281120F8874F00FE0C2D /* Other */,
+				4556281220F8874F00FE0C2D /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4556280F20F8874F00FE0C2D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4556281320F8875D00FE0C2D /* BaseViewController.h */,
+				4556281420F8875D00FE0C2D /* BaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4556281020F8874F00FE0C2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4556282A20FC6DB100FE0C2D /* DBBaseModel.h */,
+				4556282B20FC6DB100FE0C2D /* DBBaseModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4556281120F8874F00FE0C2D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4556281C20F88BA200FE0C2D /* CommonConfigure.h */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4556281220F8874F00FE0C2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45990D17211291BB009662A3 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				45990D1821129295009662A3 /* FBaseSQL */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		45990D1821129295009662A3 /* FBaseSQL */ = {
+			isa = PBXGroup;
+			children = (
+				45990D1921129295009662A3 /* SQLBaseTableOperation */,
+				45990D1A21129295009662A3 /* SQLCommandOperation */,
+				45990D1B21129385009662A3 /* FSQLCommandHandle.h */,
+				45990D1C21129385009662A3 /* FSQLCommandHandle.m */,
+				45990D1E211294E6009662A3 /* FSQLDataBase.h */,
+				45990D1F211294E6009662A3 /* FSQLDataBase.m */,
+				45990D2921129D77009662A3 /* FSQLBaseTable.h */,
+				45990D2A21129D77009662A3 /* FSQLBaseTable.m */,
+				45990D322112D08C009662A3 /* FSQLBaseRecord.h */,
+				45990D332112D08C009662A3 /* FSQLBaseRecord.m */,
+				45990D382112DC20009662A3 /* FTableFrame.h */,
+			);
+			path = FBaseSQL;
+			sourceTree = "<group>";
+		};
+		45990D1921129295009662A3 /* SQLBaseTableOperation */ = {
+			isa = PBXGroup;
+			children = (
+				45990D2F2112D052009662A3 /* FSQLBaseTable+Insert.h */,
+				45990D302112D052009662A3 /* FSQLBaseTable+Insert.m */,
+				45990D392112E36A009662A3 /* FSQLBaseTable+Read.h */,
+				45990D3A2112E36A009662A3 /* FSQLBaseTable+Read.m */,
+			);
+			path = SQLBaseTableOperation;
+			sourceTree = "<group>";
+		};
+		45990D1A21129295009662A3 /* SQLCommandOperation */ = {
+			isa = PBXGroup;
+			children = (
+				45990D2C2112A145009662A3 /* FSQLCommandHandle+CreateTable.h */,
+				45990D2D2112A145009662A3 /* FSQLCommandHandle+CreateTable.m */,
+				45990D352112D850009662A3 /* FSQLCommandHandle+Insert.h */,
+				45990D362112D850009662A3 /* FSQLCommandHandle+Insert.m */,
+				45990D3C2112E3A5009662A3 /* FSQLCommandHandle+Read.h */,
+				45990D3D2112E3A5009662A3 /* FSQLCommandHandle+Read.m */,
+				452CD090225D940400598BF2 /* FSQLCommandHandle+Update.h */,
+				452CD091225D940400598BF2 /* FSQLCommandHandle+Update.m */,
+			);
+			path = SQLCommandOperation;
+			sourceTree = "<group>";
+		};
+		45990D2521129AA2009662A3 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				45990D2621129AA2009662A3 /* UIView+FFrame.h */,
+				45990D2721129AA2009662A3 /* UIView+FFrame.m */,
+				452CD0BB22602E0B00598BF2 /* CommonTool.h */,
+				452CD0BC22602E0B00598BF2 /* CommonTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		C7598150093DC6B17935ED94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0D9A364C6C825FE4AEEE4C8 /* libPods-AccountManager.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F49066A240E61FA53FDCCC80 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA34E0FCA58F96670D6703E9 /* Pods-AccountManager.debug.xcconfig */,
+				9D1C86EAAC45E14589B83DF6 /* Pods-AccountManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45238F4520F734000001CAF0 /* AccountManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45238F5F20F734000001CAF0 /* Build configuration list for PBXNativeTarget "AccountManager" */;
+			buildPhases = (
+				A44C54A54D1EF844C34044DD /* [CP] Check Pods Manifest.lock */,
+				45238F4220F734000001CAF0 /* Sources */,
+				45238F4320F734000001CAF0 /* Frameworks */,
+				45238F4420F734000001CAF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AccountManager;
+			productName = AccountManager;
+			productReference = 45238F4620F734000001CAF0 /* AccountManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45238F3E20F734000001CAF0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = fengweiru;
+				TargetAttributes = {
+					45238F4520F734000001CAF0 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 45238F4120F734000001CAF0 /* Build configuration list for PBXProject "AccountManager" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 45238F3D20F734000001CAF0;
+			productRefGroup = 45238F4720F734000001CAF0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45238F4520F734000001CAF0 /* AccountManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45238F4420F734000001CAF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45238F5920F734000001CAF0 /* LaunchScreen.storyboard in Resources */,
+				45238F5620F734000001CAF0 /* Assets.xcassets in Resources */,
+				45238F5120F734000001CAF0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A44C54A54D1EF844C34044DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AccountManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45238F4220F734000001CAF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45990D2E2112A145009662A3 /* FSQLCommandHandle+CreateTable.m in Sources */,
+				45238F4E20F734000001CAF0 /* ViewController.m in Sources */,
+				4556281520F8875D00FE0C2D /* BaseViewController.m in Sources */,
+				45990D2B21129D77009662A3 /* FSQLBaseTable.m in Sources */,
+				4556282C20FC6DB100FE0C2D /* DBBaseModel.m in Sources */,
+				4556280D20F886FF00FE0C2D /* HomePageViewController.m in Sources */,
+				452CD0C0226069DF00598BF2 /* SettingSwitchCell.m in Sources */,
+				45990D20211294E6009662A3 /* FSQLDataBase.m in Sources */,
+				452CD0BD22602E0B00598BF2 /* CommonTool.m in Sources */,
+				45238F5C20F734000001CAF0 /* main.m in Sources */,
+				45990D412113E21D009662A3 /* AccountTable.m in Sources */,
+				452CD0BA226027AE00598BF2 /* SettingViewController.m in Sources */,
+				45990D1D21129385009662A3 /* FSQLCommandHandle.m in Sources */,
+				45516A5721391D3300B11FBF /* AccountDetailCell.m in Sources */,
+				45990D2821129AA2009662A3 /* UIView+FFrame.m in Sources */,
+				45990D312112D052009662A3 /* FSQLBaseTable+Insert.m in Sources */,
+				45990D342112D08C009662A3 /* FSQLBaseRecord.m in Sources */,
+				4558C4CF20FED2DA0043B79C /* Account.m in Sources */,
+				45990D3B2112E36A009662A3 /* FSQLBaseTable+Read.m in Sources */,
+				453DBC7B2105D3AB00FF016E /* AccountOperationViewController.m in Sources */,
+				45990D3E2112E3A5009662A3 /* FSQLCommandHandle+Read.m in Sources */,
+				452CD092225D940400598BF2 /* FSQLCommandHandle+Update.m in Sources */,
+				45238F4B20F734000001CAF0 /* AppDelegate.m in Sources */,
+				45990D372112D850009662A3 /* FSQLCommandHandle+Insert.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		45238F4F20F734000001CAF0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45238F5020F734000001CAF0 /* Base */,
+				452CD0B1225ED8A900598BF2 /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		45238F5720F734000001CAF0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45238F5820F734000001CAF0 /* Base */,
+				452CD0B2225ED8A900598BF2 /* zh-Hans */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		45238F5D20F734000001CAF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		45238F5E20F734000001CAF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45238F6020F734000001CAF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA34E0FCA58F96670D6703E9 /* Pods-AccountManager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46599FN7WW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AccountManager/AccountManager-Prefix.pch";
+				INFOPLIST_FILE = AccountManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fengweiru.test.AccountManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		45238F6120F734000001CAF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D1C86EAAC45E14589B83DF6 /* Pods-AccountManager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46599FN7WW;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AccountManager/AccountManager-Prefix.pch";
+				INFOPLIST_FILE = AccountManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fengweiru.test.AccountManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45238F4120F734000001CAF0 /* Build configuration list for PBXProject "AccountManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45238F5D20F734000001CAF0 /* Debug */,
+				45238F5E20F734000001CAF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45238F5F20F734000001CAF0 /* Build configuration list for PBXNativeTarget "AccountManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45238F6020F734000001CAF0 /* Debug */,
+				45238F6120F734000001CAF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45238F3E20F734000001CAF0 /* Project object */;
+}
