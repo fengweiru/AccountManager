@@ -74,6 +74,8 @@
         _textView = [[UITextView alloc] init];
         _textView.font = [UIFont systemFontOfSize:16];
         _textView.textColor = [UIColor blackColor];
+        
+//        [_textView addObserver:self forKeyPath:<#(nonnull NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(nullable void *)#>]
     }
     return _textView;
 }
@@ -90,7 +92,7 @@
     return self;
 }
 
-- (void)configWithCellType:(CellType)cellType account:(Account *)account
+- (void)configWithCellType:(CellType)cellType account:(Account *)account operationType:(OperationType)operationType
 {
     self.account = account;
     self.cellType = cellType;
@@ -131,12 +133,14 @@
 
 - (void)functionClick:(UIButton *)sender
 {
-    NSLog(@"%f",self.titleLabel.f_width);
-    NSLog(@"%f",self.textField.f_width);
-    NSLog(@"%f",self.functionButton.f_width);
-
-    NSLog(@"%f",self.titleLabel.f_width+self.textField.f_width+self.functionButton.f_width);
-    NSLog(@"%f",self.contentView.f_width);
+//    NSLog(@"%f",self.titleLabel.f_width);
+//    NSLog(@"%f",self.textField.f_width);
+//    NSLog(@"%f",self.functionButton.f_width);
+//
+//    NSLog(@"%f",self.titleLabel.f_width+self.textField.f_width+self.functionButton.f_width);
+//    NSLog(@"%f",self.contentView.f_width);
+    
+    
 }
 
 #pragma mark -- UITextField Target

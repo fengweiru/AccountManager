@@ -74,7 +74,7 @@
 //    }
     
     [self.dataArr removeAllObjects];
-    [self.dataArr addObjectsFromArray:[[AccountTable shareAccountTable] getAllRecordFromTable]];
+    [self.dataArr addObjectsFromArray:[Account getDataArr]];
     [self.dataArr sortUsingComparator:^NSComparisonResult(Account*  _Nonnull obj1, Account*  _Nonnull obj2) {
         if (obj1.lookTime > obj2.lookTime) {
             return NSOrderedAscending;
@@ -149,7 +149,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

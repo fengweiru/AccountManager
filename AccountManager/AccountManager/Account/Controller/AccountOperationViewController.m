@@ -72,6 +72,11 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -84,8 +89,9 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
 
 - (void)preDataOperation
 {
-    if (self.account.accountId != 0) {
+    if (self.account.accountId != -1) {
         self.operationType = operationTypeLook;
+        self.preModifyAccount = [self.account copy];
     } else {
         self.operationType = operationTypeAdd;
         self.account = [[Account alloc] init];
@@ -106,9 +112,8 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
 {
     if (self.operationType == operationTypeAdd) {
         [self setNavRightItemWithTitle:@"添加"];
-    } else if (self.operationType == operationTypeLook) {
-        [self setNavRightItemWithTitle:@"编辑"];
-    } else if (self.operationType == operationTypeModify) {
+    }
+    else if (self.operationType == operationTypeLook) {
         [self setNavRightItemWithTitle:@"保存"];
     }
     
@@ -125,17 +130,13 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
 {
     if (self.operationType == operationTypeLook) {
         
-        self.preModifyAccount = [self.account copy];
-        self.operationType = operationTypeModify;
-        [self reloadView];
-        
-    } else if (self.operationType == operationTypeModify) {
         if ([self.preModifyAccount updateSelf]) {
             self.operationType = operationTypeLook;
             self.account = self.preModifyAccount;
             [self reloadView];
         }
-    } else if (self.operationType == operationTypeAdd) {
+        
+    }else if (self.operationType == operationTypeAdd) {
         if ([self.account addSelf]) {
             [self.navigationController popViewControllerAnimated:true];
         }
@@ -205,10 +206,10 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
             break;
     }
     
-    if (self.operationType == operationTypeModify) {
-        [cell configWithCellType:cellType account:self.preModifyAccount];
+    if (self.operationType == operationTypeLook) {
+        [cell configWithCellType:cellType account:self.preModifyAccount operationType:self.operationType];
     } else {
-        [cell configWithCellType:cellType account:self.account];
+        [cell configWithCellType:cellType account:self.account operationType:self.operationType];
     }
     
     

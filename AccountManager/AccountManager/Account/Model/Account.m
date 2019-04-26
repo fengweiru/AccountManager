@@ -8,7 +8,7 @@
 
 #import "Account.h"
 
-static NSString *accountFileName = @"account.txt";
+static NSString *accountFileName = @"accounts";
 
 @interface Account ()<NSCoding,NSCopying>
 
@@ -19,7 +19,7 @@ static NSString *accountFileName = @"account.txt";
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.accountId = 0;
+        self.accountId = -1;
         self.describ = @"";
         self.name = @"";
         self.password = @"";
@@ -78,36 +78,89 @@ static NSString *accountFileName = @"account.txt";
     self.modifyTime = self.addTime;
     self.lookTime = self.addTime;
     
-    return [[AccountTable shareAccountTable] insertDataContainBinary:self];
+    
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[Account getDataArr]];
+    
+    NSInteger max = 0;
+    for (Account *account in arr) {
+        max = (max>account.accountId?max:account.accountId);
+    }
+    self.accountId = max + 1;
+    [arr addObject:self];
+    return [Account saveDataArr:[NSArray arrayWithArray:arr]];
+//    return [[AccountTable shareAccountTable] insertDataContainBinary:self];
 }
 - (BOOL)updateSelf
 {
     self.modifyTime = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] unsignedIntegerValue];
+//
+//    NSString *tableName = [[AccountTable shareAccountTable] tableName];
+//
+//    NSString *sqlStr = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@',%@ = %lu,%@ = %ld,%@ = %ld where accountId = %ld",tableName,@"describ",self.describ,@"name",self.name,@"password",self.password,@"remark",self.remark,@"url",self.url,@"addTime",self.addTime,@"modifyTime",self.modifyTime,@"lookTime",self.lookTime,self.accountId];
     
-    NSString *tableName = [[AccountTable shareAccountTable] tableName];
+//    return [[AccountTable shareAccountTable] sqlOperation:sqlStr];
     
-    NSString *sqlStr = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@',%@ = %lu,%@ = %ld,%@ = %ld where accountId = %ld",tableName,@"describ",self.describ,@"name",self.name,@"password",self.password,@"remark",self.remark,@"url",self.url,@"addTime",self.addTime,@"modifyTime",self.modifyTime,@"lookTime",self.lookTime,self.accountId];
-    
-    return [[AccountTable shareAccountTable] sqlOperation:sqlStr];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[Account getDataArr]];
+    NSInteger dataSeq = -1;
+    for (NSInteger i = 0; i < arr.count; i++) {
+        Account *account = arr[i];
+        if (account.accountId == self.accountId) {
+            dataSeq = i;
+            break;
+        }
+    }
+    if (dataSeq != -1) {  //说明存在
+        arr[dataSeq] = self;
+    } else {
+        [arr addObject:self];
+        
+    }
+    return [Account saveDataArr:[NSArray arrayWithArray:arr]];
 }
 - (BOOL)updateLookTime
 {
-    NSString *tableName = [[AccountTable shareAccountTable] tableName];
+//    NSString *tableName = [[AccountTable shareAccountTable] tableName];
+//
+//    NSString *sqlStr = [NSString stringWithFormat:@"update %@ set %@ = %ld where accountId = %ld",tableName,@"lookTime",self.lookTime,self.accountId];
+//
+//    return [[AccountTable shareAccountTable] sqlOperation:sqlStr];
     
-    NSString *sqlStr = [NSString stringWithFormat:@"update %@ set %@ = %ld where accountId = %ld",tableName,@"lookTime",self.lookTime,self.accountId];
-    
-    return [[AccountTable shareAccountTable] sqlOperation:sqlStr];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[Account getDataArr]];
+    NSInteger dataSeq = -1;
+    for (NSInteger i = 0; i < arr.count; i++) {
+        Account *account = arr[i];
+        if (account.accountId == self.accountId) {
+            dataSeq = i;
+            break;
+        }
+    }
+    if (dataSeq != -1) {  //说明存在
+        ((Account *)arr[dataSeq]).lookTime = self.lookTime;
+        return [Account saveDataArr:[NSArray arrayWithArray:arr]];
+    }
+    return false;
 }
 
 //保存数据
 + (BOOL)saveDataArr:(NSArray <Account *>*)dataArr
 {
-    return [NSKeyedArchiver archiveRootObject:dataArr toFile:[self dataFilePath]];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dataArr];
+    if (data) {
+        NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.account1"];
+        [userDefaults setObject:data forKey:accountFileName];
+        return true;
+    }
+    return false;
+//    return [NSKeyedArchiver archiveRootObject:dataArr toFile:[self dataFilePath]];
 }
 
 + (NSArray <Account *>*)getDataArr
 {
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self dataFilePath]];
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.account1"];
+    NSData *data = [userDefaults objectForKey:accountFileName];
+    NSArray *arr = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return arr;
+//    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self dataFilePath]];
 }
 
 + (NSString *)dataFilePath{

@@ -31,7 +31,7 @@ typedef enum {
 @class Account;
 @interface AccountDetailCell : UITableViewCell
 
-- (void)configWithCellType:(CellType)cellType account:(Account *)account;
+- (void)configWithCellType:(CellType)cellType account:(Account *)account operationType:(OperationType)operationType;
 
 + (CGFloat)heightForCellType:(CellType)cellType;
 

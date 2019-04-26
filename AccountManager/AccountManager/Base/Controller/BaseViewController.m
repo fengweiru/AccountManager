@@ -48,6 +48,11 @@
     self.navigationItem.leftBarButtonItem = leftItem;
 }
 
+- (void)setNavLeftItemWithImage:(UIImage *)image
+{
+    
+}
+
 - (void)setNavRightItemWithTitle:(NSString *)title
 {
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,6 +62,11 @@
     [rightButton addTarget:self action:@selector(clickRightItem:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightItem;
+}
+
+- (void)setNavRightItemWithImage:(UIImage *)image
+{
+    
 }
 
 - (void)clickForBack:(UIButton *)sender

@@ -15,7 +15,7 @@
     self.sqlCommand = [NSMutableString string];
     
     NSMutableArray *columnKeyArr = [NSMutableArray array];
-    NSMutableArray *columnValueArr = [NSMutableArray array];
+//    NSMutableArray *columnValueArr = [NSMutableArray array];
     [columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString*  _Nonnull key, NSString*  _Nonnull obj, BOOL * _Nonnull stop) {
         if (key.length == 0) {
             NSLog(@"invalid key in preSqlUpdateToTableName:columnInfo:");
