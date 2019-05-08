@@ -123,7 +123,7 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
 - (void)uploadLookTime
 {
     self.account.lookTime = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] unsignedIntegerValue];
-    [self.account updateLookTime];
+    NSLog(@"uploadLookTime:%d",[self.account updateLookTime]);
 }
 
 - (void)clickRightItem:(UIButton *)sender
@@ -134,6 +134,7 @@ static NSString *accountDetailCellId = @"accountDetailCellId";
             self.operationType = operationTypeLook;
             self.account = self.preModifyAccount;
             [self reloadView];
+            [CommonTool showMessage:@"保存成功!" duration:2];
         }
         
     }else if (self.operationType == operationTypeAdd) {

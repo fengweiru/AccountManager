@@ -8,13 +8,16 @@
 
 #import "AccountCell.h"
 #import "Account.h"
+#import "KeyboardButton.h"
 
 @interface AccountCell ()
 
+@property (nonatomic, weak) Account *account;
+
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UIButton *accountButton;
+@property (nonatomic, strong) KeyboardButton *accountButton;
 @property (nonatomic, strong) UILabel *accountDescLabel;
-@property (nonatomic, strong) UIButton *passwordButton;
+@property (nonatomic, strong) KeyboardButton *passwordButton;
 @property (nonatomic, strong) UILabel *passwordDescLabel;
 
 
@@ -27,16 +30,19 @@
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _nameLabel.numberOfLines = 2;
+        _nameLabel.minimumScaleFactor = 0.4;
+        _nameLabel.adjustsFontSizeToFitWidth = true;
 //        _nameLabel.layer.borderWidth = 1;
 //        _nameLabel.layer.borderColor = [[UIColor blackColor] CGColor];
     }
     return _nameLabel;
 }
 
-- (UIButton *)accountButton
+- (KeyboardButton *)accountButton
 {
     if (!_accountButton) {
-        _accountButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _accountButton = [KeyboardButton createKeyboardButton];
 //        _accountButton.layer.borderWidth = 1;
 //        _accountButton.layer.borderColor = [[UIColor blackColor] CGColor];
         [_accountButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -57,10 +63,10 @@
     return _accountDescLabel;
 }
 
-- (UIButton *)passwordButton
+- (KeyboardButton *)passwordButton
 {
     if(!_passwordButton) {
-        _passwordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _passwordButton = [KeyboardButton createKeyboardButton];
 //        _passwordButton.layer.borderWidth = 1;
 //        _passwordButton.layer.borderColor = [[UIColor blackColor] CGColor];
         [_passwordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -84,33 +90,41 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.backgroundColor = [UIColor clearColor];
         
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.accountButton];
-        [self.accountButton addSubview:self.accountDescLabel];
+//        [self.accountButton addSubview:self.accountDescLabel];
         [self.contentView addSubview:self.passwordButton];
-        [self.passwordButton addSubview:self.passwordDescLabel];
+//        [self.passwordButton addSubview:self.passwordDescLabel];
         
     }
     return self;
 }
 
-- (void)configWithAccount:(Account *)account
+- (void)configWithAccount:(Account *)account isPasswordHidden:(BOOL)isPasswordHidden
 {
+    self.account = account;
+    
     self.nameLabel.text = account.describ;
     [self.accountButton setTitle:account.name forState:UIControlStateNormal];
-    [self.passwordButton setTitle:account.password forState:UIControlStateNormal];
-    self.accountDescLabel.text = @"点击输入账户";
-    self.passwordDescLabel.text = @"点击输入密码";
+    
+    NSString *passwordString;
+    if (isPasswordHidden) {
+        NSRegularExpression *regExp = [[NSRegularExpression alloc] initWithPattern:@"\\w|\\W{1}" options:NSRegularExpressionCaseInsensitive error:nil];
+        passwordString = [regExp stringByReplacingMatchesInString:account.password options:NSMatchingReportProgress range:NSMakeRange(0, account.password.length) withTemplate:@"*"];
+    } else {
+        passwordString = account.password;
+    }
+    
+    [self.passwordButton setTitle:passwordString forState:UIControlStateNormal];
 }
 
 - (void)layoutSubviews
 {
     self.nameLabel.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width/5, self.contentView.frame.size.height);
-    self.accountButton.frame = CGRectMake(self.nameLabel.frame.origin.x+self.nameLabel.frame.size.width, 0, [UIScreen mainScreen].bounds.size.width*2/5, self.contentView.frame.size.height);
-    self.passwordButton.frame = CGRectMake(self.accountButton.frame.origin.x+self.accountButton.frame.size.width, 0, [UIScreen mainScreen].bounds.size.width*2/5, self.contentView.frame.size.height);
-    self.accountDescLabel.frame = CGRectMake(0, self.accountButton.frame.size.height/2, self.accountButton.frame.size.width, self.accountButton.frame.size.height/2);
-    self.passwordDescLabel.frame = CGRectMake(0, self.passwordButton.frame.size.height/2, self.passwordButton.frame.size.width, self.passwordButton.frame.size.height/2);
+    self.accountButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/5+20, 5, [UIScreen mainScreen].bounds.size.width*2/5-40, self.contentView.frame.size.height-10);
+    self.passwordButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*3/5+20, 5, [UIScreen mainScreen].bounds.size.width*2/5-40, self.contentView.frame.size.height-10);
 }
 
 - (void)inputString:(UIButton *)sender

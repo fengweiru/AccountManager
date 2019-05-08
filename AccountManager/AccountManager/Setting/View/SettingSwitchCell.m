@@ -61,6 +61,10 @@
             self.title.text = @"指纹/面容解锁";
             switchOpen = [[self.userDefaults objectForKey:@"fingerprintOrFaceOpen"] boolValue];
             break;
+        case SwitchTypePasswordHidden:
+            self.title.text = @"密码隐藏";
+            switchOpen = [[self.userDefaults objectForKey:@"passwordHidden"] boolValue];
+            break;
             
         default:
             break;
@@ -89,6 +93,8 @@
         }
     } else if(self.switchType == SwitchTypeFingerprintOrFace) {
         [self.userDefaults setObject:[NSNumber numberWithBool:sender.selected] forKey:@"fingerprintOrFaceOpen"];
+    } else if (self.switchType == SwitchTypePasswordHidden) {
+        [self.userDefaults setObject:[NSNumber numberWithBool:sender.selected] forKey:@"passwordHidden"];
     }
 
 }

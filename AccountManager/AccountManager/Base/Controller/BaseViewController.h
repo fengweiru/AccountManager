@@ -18,5 +18,6 @@
 - (void)setNavRightItemWithImage:(UIImage *)image;
 
 - (void)clickLeftItem:(UIButton *)sender;
+- (void)clickRightItem:(UIButton *)sender;
 
 @end

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<AccountCellDelegate> delegate;
 
-- (void)configWithAccount:(Account *)account;
+- (void)configWithAccount:(Account *)account isPasswordHidden:(BOOL)isPasswordHidden;
 
 @end
 

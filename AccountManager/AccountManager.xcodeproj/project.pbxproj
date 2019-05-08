@@ -26,6 +26,8 @@
 		4556281520F8875D00FE0C2D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556281420F8875D00FE0C2D /* BaseViewController.m */; };
 		4556282C20FC6DB100FE0C2D /* DBBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556282B20FC6DB100FE0C2D /* DBBaseModel.m */; };
 		4558C4CF20FED2DA0043B79C /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 4558C4CE20FED2DA0043B79C /* Account.m */; };
+		455D5FBC228124EE003BF0A4 /* KeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 455D5FBB228124EE003BF0A4 /* KeyboardButton.m */; };
+		455D5FBF2282BB33003BF0A4 /* PasswordInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455D5FBE2282BB33003BF0A4 /* PasswordInputViewController.m */; };
 		45990D1D21129385009662A3 /* FSQLCommandHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1C21129385009662A3 /* FSQLCommandHandle.m */; };
 		45990D20211294E6009662A3 /* FSQLDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1F211294E6009662A3 /* FSQLDataBase.m */; };
 		45990D2821129AA2009662A3 /* UIView+FFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D2721129AA2009662A3 /* UIView+FFrame.m */; };
@@ -106,6 +108,10 @@
 		4556282B20FC6DB100FE0C2D /* DBBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBBaseModel.m; sourceTree = "<group>"; };
 		4558C4CD20FED2DA0043B79C /* Account.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		4558C4CE20FED2DA0043B79C /* Account.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		455D5FBA228124EE003BF0A4 /* KeyboardButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardButton.h; sourceTree = "<group>"; };
+		455D5FBB228124EE003BF0A4 /* KeyboardButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardButton.m; sourceTree = "<group>"; };
+		455D5FBD2282BB33003BF0A4 /* PasswordInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordInputViewController.h; sourceTree = "<group>"; };
+		455D5FBE2282BB33003BF0A4 /* PasswordInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordInputViewController.m; sourceTree = "<group>"; };
 		45990D1B21129385009662A3 /* FSQLCommandHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLCommandHandle.h; sourceTree = "<group>"; };
 		45990D1C21129385009662A3 /* FSQLCommandHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLCommandHandle.m; sourceTree = "<group>"; };
 		45990D1E211294E6009662A3 /* FSQLDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLDataBase.h; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 				4556280C20F886FF00FE0C2D /* HomePageViewController.m */,
 				453DBC792105D3AB00FF016E /* AccountOperationViewController.h */,
 				453DBC7A2105D3AB00FF016E /* AccountOperationViewController.m */,
+				455D5FBD2282BB33003BF0A4 /* PasswordInputViewController.h */,
+				455D5FBE2282BB33003BF0A4 /* PasswordInputViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -416,6 +424,8 @@
 				45B62F11226EE5070097EF0E /* Account.m */,
 				4552771722704E06006AD9B0 /* input_trigger_highlight.png */,
 				4552771622704E06006AD9B0 /* input_trigger.png */,
+				455D5FBA228124EE003BF0A4 /* KeyboardButton.h */,
+				455D5FBB228124EE003BF0A4 /* KeyboardButton.m */,
 			);
 			path = AccountKeyboard;
 			sourceTree = "<group>";
@@ -581,6 +591,7 @@
 				4556282C20FC6DB100FE0C2D /* DBBaseModel.m in Sources */,
 				4556280D20F886FF00FE0C2D /* HomePageViewController.m in Sources */,
 				452CD0C0226069DF00598BF2 /* SettingSwitchCell.m in Sources */,
+				455D5FBF2282BB33003BF0A4 /* PasswordInputViewController.m in Sources */,
 				45990D20211294E6009662A3 /* FSQLDataBase.m in Sources */,
 				452CD0BD22602E0B00598BF2 /* CommonTool.m in Sources */,
 				45238F5C20F734000001CAF0 /* main.m in Sources */,
@@ -605,6 +616,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455D5FBC228124EE003BF0A4 /* KeyboardButton.m in Sources */,
 				45B62F07226EDE580097EF0E /* KeyboardViewController.m in Sources */,
 				45B62F12226EE5070097EF0E /* Account.m in Sources */,
 				4552771C22714068006AD9B0 /* AccountCell.m in Sources */,

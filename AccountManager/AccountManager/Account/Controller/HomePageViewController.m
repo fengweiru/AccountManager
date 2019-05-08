@@ -14,6 +14,8 @@
 
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) NSUserDefaults *user;
+
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray<Account *> *dataArr;
@@ -21,6 +23,14 @@
 @end
 
 @implementation HomePageViewController
+
+- (NSUserDefaults *)user
+{
+    if (!_user) {
+        _user = [[NSUserDefaults alloc] initWithSuiteName:@"group.account1"];
+    }
+    return _user;
+}
 
 - (NSMutableArray *)dataArr
 {
@@ -131,7 +141,12 @@
     
     Account *account = self.dataArr[indexPath.row];
     cell.textLabel.text = account.describ;
-    cell.detailTextLabel.text = account.password;
+    if ([[self.user objectForKey:@"passwordHidden"] boolValue]) {
+        cell.detailTextLabel.text = [CommonTool hiddenPassword:account.password];
+    } else {
+        cell.detailTextLabel.text = account.password;
+    }
+    NSLog(@"account %ld : %ld",indexPath.row, account.accountId);
     return cell;
 }
 

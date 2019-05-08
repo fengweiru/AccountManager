@@ -8,21 +8,53 @@
 
 #import "AppDelegate.h"
 #import "HomePageViewController.h"
+#import "PasswordInputViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) NSUserDefaults *user;
 
 @end
 
 @implementation AppDelegate
 
+- (NSUserDefaults *)user
+{
+    if (!_user) {
+        _user = [[NSUserDefaults alloc] initWithSuiteName:@"group.account1"];
+    }
+    return _user;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    HomePageViewController *vc = [[HomePageViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = nav;
+    [self initUserDefaultData];
     
+    if ([[self.user objectForKey:@"passwordOpen"] boolValue]) {
+        PasswordInputViewController *vc = [[PasswordInputViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = nav;
+    } else {
+        HomePageViewController *vc = [[HomePageViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        self.window.rootViewController = nav;
+    }
+
     return YES;
+}
+
+- (void)initUserDefaultData
+{
+    if ([self.user objectForKey:@"passwordOpen"] == nil) {
+        [self.user setObject:[NSNumber numberWithBool:false] forKey:@"passwordOpen"];
+    }
+    if ([self.user objectForKey:@"fingerprintOrFaceOpen"] == nil) {
+        [self.user setObject:[NSNumber numberWithBool:false] forKey:@"fingerprintOrFaceOpen"];
+    }
+    if ([self.user objectForKey:@"passwordHidden"] == nil) {
+        [self.user setObject:[NSNumber numberWithBool:false] forKey:@"passwordHidden"];
+    }
 }
 
 

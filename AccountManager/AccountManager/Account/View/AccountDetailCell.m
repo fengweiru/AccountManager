@@ -126,6 +126,14 @@
             break;
     }
     
+    if (cellType == cellTypeUrl) {
+        [self.functionButton setTitle:@"前往" forState:UIControlStateNormal];
+        self.functionButton.tag = 101;
+    } else {
+        [self.functionButton setTitle:@"复制" forState:UIControlStateNormal];
+        self.functionButton.tag = 0;
+    }
+    
     self.titleLabel.text = title;
     self.textField.text = value;
     
@@ -139,7 +147,19 @@
 //
 //    NSLog(@"%f",self.titleLabel.f_width+self.textField.f_width+self.functionButton.f_width);
 //    NSLog(@"%f",self.contentView.f_width);
-    
+    if (sender.tag == 101) {
+        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        } else {
+            // Fallback on earlier versions
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    } else {
+        [CommonTool writeToPasteBoard:self.textField.text];
+        
+        [CommonTool showMessage:@"复制成功!" duration:2];
+    }
     
 }
 
@@ -188,6 +208,13 @@
     }];
     
 }
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    NSLog(@"replacementString: '%@'", string);
+//
+//    return true;
+//}
 
 + (CGFloat)heightForCellType:(CellType)cellType
 {

@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum {
     SwitchTypePassword = 1,
-    SwitchTypeFingerprintOrFace
+    SwitchTypeFingerprintOrFace,
+    SwitchTypePasswordHidden
 }SwitchType;
 
 @interface SettingSwitchCell : UITableViewCell

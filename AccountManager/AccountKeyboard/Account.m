@@ -20,7 +20,7 @@ static NSString *accountFileName = @"accounts";
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.accountId = 0;
+        self.accountId = -1;
         self.describ = @"";
         self.name = @"";
         self.password = @"";
@@ -50,6 +50,7 @@ static NSString *accountFileName = @"accounts";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
+    self.accountId = [aDecoder decodeIntegerForKey:@"accountId"];
     self.describ = [aDecoder decodeObjectForKey:@"describ"];
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.password = [aDecoder decodeObjectForKey:@"password"];
@@ -63,6 +64,7 @@ static NSString *accountFileName = @"accounts";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+    [aCoder encodeInteger:self.accountId forKey:@"accountId"];
     [aCoder encodeObject:self.describ forKey:@"describ"];
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.password forKey:@"password"];

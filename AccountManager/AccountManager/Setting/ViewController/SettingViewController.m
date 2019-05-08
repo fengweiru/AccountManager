@@ -42,7 +42,7 @@
 - (NSUserDefaults *)user
 {
     if (!_user) {
-        _user = [NSUserDefaults standardUserDefaults];
+        _user = [[NSUserDefaults alloc] initWithSuiteName:@"group.account1"];
     }
     return _user;
 }
@@ -78,7 +78,7 @@
 {
     WS(weakSelf);
     if ([self.user objectForKey:@"password"]) {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"是否使用上一次的密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"是否使用上一次的密码" message:[self.user objectForKey:@"password"] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [weakSelf.user setObject:[NSNumber numberWithBool:true] forKey:@"passwordOpen"];
             self.passwordOpen = true;
@@ -139,7 +139,7 @@
 #pragma mark -- UITableView代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -150,11 +150,17 @@
     //
     //        }
     //    }
-    if (self.passwordOpen) {
-        return 2;
+    if (section == 0) {
+        LAContext *context = [[LAContext alloc] init];
+        if (self.passwordOpen && [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:nil]) {
+            return 2;
+        } else {
+            return 1;
+        }
     } else {
         return 1;
     }
+    
     
 }
 
@@ -170,15 +176,31 @@
     }
     
     SwitchType switchType;
-    if (indexPath.row == 0) {
-        switchType = SwitchTypePassword;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            switchType = SwitchTypePassword;
+        } else {
+            switchType = SwitchTypeFingerprintOrFace;
+        }
     } else {
-        switchType = SwitchTypeFingerprintOrFace;
+        switchType = SwitchTypePasswordHidden;
     }
     
     [cell configWithSwitchType:switchType];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 20)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
 
 
