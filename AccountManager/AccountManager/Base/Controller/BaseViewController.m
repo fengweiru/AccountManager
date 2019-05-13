@@ -53,6 +53,10 @@
     
 }
 
+- (void)setNavRightNullItem
+{
+    self.navigationItem.rightBarButtonItem = nil;
+}
 - (void)setNavRightItemWithTitle:(NSString *)title
 {
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];

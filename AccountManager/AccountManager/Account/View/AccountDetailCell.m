@@ -147,18 +147,18 @@
 //
 //    NSLog(@"%f",self.titleLabel.f_width+self.textField.f_width+self.functionButton.f_width);
 //    NSLog(@"%f",self.contentView.f_width);
+    
     if (sender.tag == 101) {
-        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
-        if (@available(iOS 10.0, *)) {
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-        } else {
-            // Fallback on earlier versions
+        NSURL *url = [NSURL URLWithString:self.textField.text];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
+        } else {
+            [CommonTool showMessage:@"跳转失败" duration:2.f];
         }
     } else {
         [CommonTool writeToPasteBoard:self.textField.text];
         
-        [CommonTool showMessage:@"复制成功!" duration:2];
+        [CommonTool showMessage:@"复制成功!" duration:2.f];
     }
     
 }

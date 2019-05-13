@@ -61,23 +61,34 @@
 - (void)judgeFingerprintOrFaceOpen
 {
     WS(weakSelf);
-    
     BOOL fingerprintOrFaceOpen = [[self.user objectForKey:@"fingerprintOrFaceOpen"] boolValue];
     if (fingerprintOrFaceOpen) {
         LAContext *context = [[LAContext alloc] init];
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:@"验证指纹以确认您的身份" reply:^(BOOL success, NSError * _Nullable error) {
-            if (success) {
-                HomePageViewController *vc = [[HomePageViewController alloc] init];
-                [weakSelf.navigationController pushViewController:vc animated:true];
-            } else {
-                UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"密码错误" message:nil preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"重试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [weakSelf judgeFingerprintOrFaceOpen];
-                }];
-                [vc addAction:retryAction];
-                [self presentViewController:vc animated:true completion:nil];
-            }
-        }];
+        if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:nil]) {
+            [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"验证以确认您的身份" reply:^(BOOL success, NSError * _Nullable error) {
+                NSLog(@"error : %@",error);
+                if (success) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        HomePageViewController *vc = [[HomePageViewController alloc] init];
+                        [weakSelf.navigationController pushViewController:vc animated:true];
+                    });
+                } else {
+                    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"密码错误" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"重试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [weakSelf judgeFingerprintOrFaceOpen];
+                    }];
+                    [vc addAction:retryAction];
+                    [self presentViewController:vc animated:true completion:nil];
+                }
+            }];
+        } else {
+            UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"系统密码关闭" message:@"请输入助手密码进入" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            }];
+            [vc addAction:retryAction];
+            [self presentViewController:vc animated:true completion:nil];
+        }
+        
     }
 }
 

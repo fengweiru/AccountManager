@@ -14,6 +14,9 @@
 @interface KeyboardViewController ()<UITableViewDelegate,UITableViewDataSource,AccountCellDelegate>
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 
+@property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic, strong) UIView *toolView;
 @property (nonatomic, strong) KeyboardButton *passwordHiddenButton;
 @property (nonatomic, strong) KeyboardButton *clearButton;
 @property (nonatomic, strong) KeyboardButton *lineButton;
@@ -25,6 +28,8 @@
 @property (nonatomic, strong) NSUserDefaults *users;
 @property (nonatomic, assign) BOOL isPasswordHidden;
 
+@property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+
 @end
 
 @implementation KeyboardViewController
@@ -35,6 +40,15 @@
         _accountArr = [Account getDataArr];
     }
     return _accountArr;
+}
+
+- (UIView *)bottomView
+{
+    if(!_bottomView) {
+        _bottomView = [[UIView alloc] init];
+        _bottomView.backgroundColor = [UIColor clearColor];
+    }
+    return _bottomView;
 }
 
 - (UITableView *)tableView
@@ -52,6 +66,15 @@
         _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
+}
+
+- (UIView *)toolView
+{
+    if(!_toolView) {
+        _toolView = [[UIView alloc] init];
+        _toolView.backgroundColor = [UIColor clearColor];
+    }
+    return _toolView;
 }
 
 - (KeyboardButton *)passwordHiddenButton
@@ -99,10 +122,39 @@
     return _backButton;
 }
 
+- (NSLayoutConstraint *)heightConstraint
+{
+    if (!_heightConstraint) {
+        _heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:0];
+        NSLog(@"inputView : %@ \n self.view : %@",self.inputView,self.view);
+        _heightConstraint.priority = 999;
+    }
+    return _heightConstraint;
+}
+
 - (void)updateViewConstraints {
     [super updateViewConstraints];
+//
+//    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+//    CGFloat screenH = screenSize.height;
+//    CGFloat screenW = screenSize.width;
+//    BOOL isLandscape = screenH < screenW ? true : false;
+//    CGFloat keyboardHeigt = isLandscape ? 200 : 250;
+//    NSLog(@"keyboardHeigt : %f", keyboardHeigt);
+//    if (self.heightConstraint.constant != keyboardHeigt) {
+//        self.heightConstraint.constant = keyboardHeigt;
+//        NSLog(@"self.heightConstraint.constant : %f",self.heightConstraint.constant);
+//    }
     
     // Add custom view sizing constraints here
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"viewDidAppear");
+    [super viewDidAppear:animated];
+//    [self.view addConstraint:self.heightConstraint];
+//    [self.view setNeedsUpdateConstraints];
 }
 
 - (void)viewDidLoad {
@@ -116,7 +168,8 @@
     [self reloadPasswordButton];
     
     // Perform custom UI setup here
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.bottomView];
+    [self.bottomView addSubview:self.tableView];
     
     self.nextKeyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.nextKeyboardButton setBackgroundImage:[UIImage imageNamed:@"input_trigger"] forState:UIControlStateNormal];
@@ -133,14 +186,35 @@
         [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventAllTouchEvents];
     }
     
-    [self.view addSubview:self.passwordHiddenButton];
-    [self.view addSubview:self.nextKeyboardButton];
-    [self.view addSubview:self.clearButton];
-    [self.view addSubview:self.lineButton];
-    [self.view addSubview:self.backButton];
+    [self.bottomView addSubview:self.toolView];
+    [self.toolView addSubview:self.passwordHiddenButton];
+    [self.toolView addSubview:self.nextKeyboardButton];
+    [self.toolView addSubview:self.clearButton];
+    [self.toolView addSubview:self.lineButton];
+    [self.toolView addSubview:self.backButton];
     
 //    [self.nextKeyboardButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
 //    [self.nextKeyboardButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+
+    [self addConstraint];
+}
+
+- (void)addConstraint
+{
+    self.bottomView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint *constraint1 = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint  *constraint2 = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint  *constraint3 = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *constraint4 = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+    NSLayoutConstraint *constraint5 = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:230];
+    
+    
+    [self.view addConstraint:constraint1];
+    [self.view addConstraint:constraint2];
+    [self.view addConstraint:constraint3];
+    [self.view addConstraint:constraint4];
+    [self.view addConstraint:constraint5];
+    
 }
 
 - (void)viewWillLayoutSubviews
@@ -152,36 +226,38 @@
     }
     self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-54);
     
+    self.toolView.frame = CGRectMake(0, self.tableView.frame.size.height, self.view.bounds.size.width, 54);
+    
     CGFloat distance = 0;
     CGFloat numSpace;
     if (self.nextKeyboardButton.hidden) {
         numSpace = (self.view.frame.size.width-44*4)/5;
         distance += numSpace;
-        self.passwordHiddenButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+        self.passwordHiddenButton.frame = CGRectMake(distance, 5, 44, 44);
         distance += self.passwordHiddenButton.bounds.size.width;
     } else {
         numSpace = (self.view.frame.size.width-44*5)/6;
         distance += numSpace;
-        self.passwordHiddenButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+        self.passwordHiddenButton.frame = CGRectMake(distance, 5, 44, 44);
         distance += self.passwordHiddenButton.bounds.size.width;
-        
+
         distance += numSpace;
-        self.nextKeyboardButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+        self.nextKeyboardButton.frame = CGRectMake(distance, 5, 44, 44);
         distance += self.nextKeyboardButton.bounds.size.width;
     }
-    
+
     distance += numSpace;
-    self.clearButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+    self.clearButton.frame = CGRectMake(distance, 5, 44, 44);
     distance += self.clearButton.frame.size.width;
-    
+
     distance += numSpace;
-    self.lineButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+    self.lineButton.frame = CGRectMake(distance, 5, 44, 44);
     distance += self.lineButton.frame.size.width;
-    
+
     distance += numSpace;
-    self.backButton.frame = CGRectMake(distance, self.view.bounds.size.height-49, 44, 44);
+    self.backButton.frame = CGRectMake(distance, 5, 44, 44);
     distance += self.backButton.frame.size.width;
-    
+
     [super viewWillLayoutSubviews];
     NSLog(@"=========:%f",self.view.bounds.size.height);
 }

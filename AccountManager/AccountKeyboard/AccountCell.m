@@ -46,7 +46,7 @@
 //        _accountButton.layer.borderWidth = 1;
 //        _accountButton.layer.borderColor = [[UIColor blackColor] CGColor];
         [_accountButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_accountButton addTarget:self action:@selector(inputString:) forControlEvents:UIControlEventTouchUpInside];
+        [_accountButton addTarget:self action:@selector(inputName:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _accountButton;
 }
@@ -70,7 +70,7 @@
 //        _passwordButton.layer.borderWidth = 1;
 //        _passwordButton.layer.borderColor = [[UIColor blackColor] CGColor];
         [_passwordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_passwordButton addTarget:self action:@selector(inputString:) forControlEvents:UIControlEventTouchUpInside];
+        [_passwordButton addTarget:self action:@selector(inputPassword:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _passwordButton;
 }
@@ -127,10 +127,17 @@
     self.passwordButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*3/5+20, 5, [UIScreen mainScreen].bounds.size.width*2/5-40, self.contentView.frame.size.height-10);
 }
 
-- (void)inputString:(UIButton *)sender
+- (void)inputName:(UIButton *)sender
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(inputString:)]) {
         [self.delegate inputString:sender.titleLabel.text];
+    }
+}
+
+- (void)inputPassword:(UIButton *)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(inputString:)]) {
+        [self.delegate inputString:self.account.password];
     }
 }
 

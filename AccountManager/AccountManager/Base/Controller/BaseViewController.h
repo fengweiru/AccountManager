@@ -14,6 +14,7 @@
 - (void)setNavLeftBackItem;
 - (void)setNavLeftItemWithTitle:(NSString *)title;
 - (void)setNavLeftItemWithImage:(UIImage *)image;
+- (void)setNavRightNullItem;
 - (void)setNavRightItemWithTitle:(NSString *)title;
 - (void)setNavRightItemWithImage:(UIImage *)image;
 

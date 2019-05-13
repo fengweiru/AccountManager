@@ -28,6 +28,7 @@
 		4558C4CF20FED2DA0043B79C /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 4558C4CE20FED2DA0043B79C /* Account.m */; };
 		455D5FBC228124EE003BF0A4 /* KeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 455D5FBB228124EE003BF0A4 /* KeyboardButton.m */; };
 		455D5FBF2282BB33003BF0A4 /* PasswordInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455D5FBE2282BB33003BF0A4 /* PasswordInputViewController.m */; };
+		45619CCD228951C200E96ECE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45619CCC228951C200E96ECE /* MessageUI.framework */; };
 		45990D1D21129385009662A3 /* FSQLCommandHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1C21129385009662A3 /* FSQLCommandHandle.m */; };
 		45990D20211294E6009662A3 /* FSQLDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D1F211294E6009662A3 /* FSQLDataBase.m */; };
 		45990D2821129AA2009662A3 /* UIView+FFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 45990D2721129AA2009662A3 /* UIView+FFrame.m */; };
@@ -112,6 +113,7 @@
 		455D5FBB228124EE003BF0A4 /* KeyboardButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardButton.m; sourceTree = "<group>"; };
 		455D5FBD2282BB33003BF0A4 /* PasswordInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordInputViewController.h; sourceTree = "<group>"; };
 		455D5FBE2282BB33003BF0A4 /* PasswordInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordInputViewController.m; sourceTree = "<group>"; };
+		45619CCC228951C200E96ECE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		45990D1B21129385009662A3 /* FSQLCommandHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLCommandHandle.h; sourceTree = "<group>"; };
 		45990D1C21129385009662A3 /* FSQLCommandHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQLCommandHandle.m; sourceTree = "<group>"; };
 		45990D1E211294E6009662A3 /* FSQLDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQLDataBase.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45619CCD228951C200E96ECE /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +436,7 @@
 		C7598150093DC6B17935ED94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45619CCC228951C200E96ECE /* MessageUI.framework */,
 				A0D9A364C6C825FE4AEEE4C8 /* libPods-AccountManager.a */,
 			);
 			name = Frameworks;

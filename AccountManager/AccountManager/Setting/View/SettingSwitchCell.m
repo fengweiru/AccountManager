@@ -23,7 +23,7 @@
 {
     if (!_title) {
         _title = [[UILabel alloc] init];
-        _title.font = FFontRegular(18);
+        _title.font = FFontRegular(16);
     }
     return _title;
 }

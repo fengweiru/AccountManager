@@ -12,7 +12,7 @@
 #import "AccountOperationViewController.h"
 #import "SettingViewController.h"
 
-@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property (nonatomic, strong) NSUserDefaults *user;
 
@@ -50,6 +50,13 @@
         
         _tableView.estimatedRowHeight = 50;
 //        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
+        
+        UISearchBar *searchBar = [[UISearchBar alloc] init];
+        searchBar.delegate = self;
+        searchBar.placeholder = @"输入名称、帐号或备注";
+        [searchBar setAutocorrectionType:UITextAutocorrectionTypeNo];
+        [searchBar sizeToFit];
+        _tableView.tableHeaderView = searchBar;
     }
     return _tableView;
 }
@@ -157,6 +164,28 @@
     Account *account = self.dataArr[indexPath.row];
     AccountOperationViewController *vc = [[AccountOperationViewController alloc] initWithAccount:account];
     [self.navigationController pushViewController:vc animated:true];
+}
+
+#pragma mark -- UISearchBarDelegate
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length == 0) {
+        [self setupData];
+    } else {
+        NSMutableArray <Account *>*removeArr = [NSMutableArray new];
+        for (Account *account in self.dataArr) {
+            if (!([account.describ containsString:searchText] || [account.name containsString:searchText] || [account.remark containsString:searchText])) {
+                [removeArr addObject:account];
+            }
+        }
+        if (removeArr.count > 0) {
+            for (Account *account in removeArr) {
+                [self.dataArr removeObject:account];
+            }
+        }
+        [self.tableView reloadData];
+    }
+    
 }
 
 
